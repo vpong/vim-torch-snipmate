@@ -1,8 +1,7 @@
 # LUA
 
 snippet re
-	require
-	${1}
+	local $1 = require ${1:ModuleName}
 
 
 # Torch
@@ -35,9 +34,6 @@ snippet vc
 
 snippet vm
 	VolumetricMaxPooling(${1:poolSizeT}, ${2:poolSizeW}, ${3:poolSizeH})
-
-snippet re
-	ReLU()
 
 snippet sig
 	Sigmoid()
