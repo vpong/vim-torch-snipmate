@@ -1,17 +1,47 @@
-# LUA
+# Custom
+snippet lre
+	local $1 = require '${1:ModuleName}'
 
 snippet re
-	local $1 = require ${1:ModuleName}
+	require '${1:ModuleName}'
 
+snippet test
+	require '${1:ModuleName}'
+	local tester = torch.Tester()
+
+	local Test$1 = {}
+	function Test$1.test_${2:TestName}()
+		local x = $1()
+		tester:asserteq(val, condition, msg)
+	end
+
+	tester:add(Test$1)
+
+	tester:run()
+
+snippet --
+	--[[
+	]]--
+
+snippet ---
+	print('---')
+
+# LUA
+snippet uadd
+	${1:ModuleName}_tester = require 'unittest_$1'
+	$1_tester:run()
 
 # Torch
 # New class
 snippet cl
-	local ${1:LocalName}, parent = torch.class(${2:ModuleName}, ${3:ParentName})
+	local ${1:LocalName}, parent = torch.class('${2:ModuleName}', '${3:ParentName}')
 
 	function $1:__init(${4:arg})
 		parent:__init(self)
 		self.$4 = $4
+	end
+
+	function $1:foo()
 	end
 	${0}
 
